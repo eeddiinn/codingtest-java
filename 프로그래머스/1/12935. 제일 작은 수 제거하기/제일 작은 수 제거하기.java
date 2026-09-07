@@ -3,33 +3,33 @@ import java.util.*;
 class Solution {
     public int[] solution(int[] arr) {
         int[] answer = {};
-        ArrayList<Integer> a = new ArrayList<>();
-        ArrayList<Integer> b = new ArrayList<>();
+        int min;
         
-        for(int i = 0; i < arr.length; i++) {
-            a.add(arr[i]);
-            b.add(arr[i]);
-        }
-        
-        a.sort(null);
-        
-        for(int i = 0; i < arr.length; i++) {
-            if (arr[i] == a.get(0)) {
-                b.remove(i);
-            }
-        }
-    
-        if(b.isEmpty()) {
+        if (arr.length == 1) {
             answer = new int[1];
             answer[0] = -1;
+            return answer;
         }
-        else {
-            answer = new int[b.size()];
-            for(int i = 0; i < b.size(); i++) {
-                answer[i] = b.get(i);
+        
+        //1. 젤 작은 수 찾기
+        min = arr[0];
+        
+        for(int i = 0; i < arr.length; i++) {
+            if(arr[i] < min) {
+                min = arr[i];
             }
         }
         
+        answer = new int[arr.length-1];
+        int index = 0;
+        
+        for(int i = 0; i < arr.length; i++) {
+            if (arr[i] != min) {
+                answer[index++] = arr[i];
+            }
+        }
+       
+    
         return answer;
     }
 }
