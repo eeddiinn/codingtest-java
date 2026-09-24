@@ -4,11 +4,10 @@ class Solution {
     public int solution(int k, int[] tangerine) {
         int answer = 0;
         
-        
         HashMap<Integer, Integer> map = new HashMap<>();
         
-        for (int i = 0; i < tangerine.length; i++) {
-            if (map.containsKey(tangerine[i])) {
+        for(int i = 0; i < tangerine.length; i++) {
+            if(map.containsKey(tangerine[i])) {
                 map.put(tangerine[i], map.get(tangerine[i]) + 1);
             }
             else {
@@ -16,21 +15,20 @@ class Solution {
             }
         }
         
-        ArrayList<Integer> list = new ArrayList<>(map.values());
+        ArrayList<Integer> a = new ArrayList<>(map.values());
         
-        list.sort(Collections.reverseOrder());
+        a.sort(Collections.reverseOrder());
         
         int count = 0;
         
-        for(int i = 0; i < list.size(); i++) {
-            count = count + list.get(i);
-            answer++;
+        for(int i = 0; i < a.size(); i++) {
+            count = count + a.get(i);
+            answer ++;
             
-            if( count >= k) {
+            if(count >= k){
                 break;
             }
         }
-        
         return answer;
     }
 }
