@@ -3,19 +3,25 @@ import java.util.*;
 class Solution {
     public int[] solution(int k, int[] score) {
         int[] answer = new int[score.length];
-        PriorityQueue<Integer> a = new PriorityQueue<>();
-        
-        for(int i = 0; i < score.length; i++) { 
-            a.add(score[i]);
-            
-            if(a.size() > k) {
-                a.poll();
+        ArrayList<Integer> list = new ArrayList<>();
+
+        for (int i = 0; i < score.length; i++) {
+
+            if (list.size() < k) {
+                list.add(score[i]);
             }
-            
-            answer[i] = a.peek();
-        
+            else {
+                if (list.get(0) < score[i]) {
+                    list.remove(0);
+                    list.add(score[i]);
+                }
+            }
+
+            list.sort(null);
+
+            answer[i] = list.get(0);
         }
-        
+
         return answer;
     }
 }
