@@ -6,8 +6,12 @@ class Solution {
             return 1;
         }
 
-        long a = 1; // n=1
-        long b = 2; // n=2
+        if (n == 2) {
+            return 2;
+        }
+
+        long a = 1;
+        long b = 2;
 
         for (int i = 3; i <= n; i++) {
             answer = (a + b) % 1234567;
@@ -16,6 +20,6 @@ class Solution {
             b = answer;
         }
 
-        return b;
+        return answer;
     }
 }
