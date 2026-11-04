@@ -45,6 +45,7 @@ class Solution {
                 int y = cy;
                 
                 while(true) {
+                    //다음 좌표
                     int nx = x + dx[i];
                     int ny = y + dy[i];
                     
@@ -63,13 +64,12 @@ class Solution {
                     y = ny;
                 }
                 
-                if(x == cx && y == cy || visited[x][y]) {
+                if(visited[x][y]) {
                     continue;
                 }
-                else {
+                
                     queue.offer(new int[]{x, y, count + 1});
-                    visited[x][y] = true;   
-                }                
+                    visited[x][y] = true;              
         
             }
         }
